@@ -1,14 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
+import { TonConnectProvider } from './components/TonConnectProvider'
 import './index.css'
 
 import WebApp from '@twa-dev/sdk'
 
-WebApp.ready();
+WebApp.ready()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <TonConnectProvider>
+      <App />
+    </TonConnectProvider>
   </React.StrictMode>,
 )

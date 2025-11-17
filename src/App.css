@@ -1,42 +1,325 @@
-#root {
-  max-width: 1280px;
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--app-bg);
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.app-container {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.app-header h1 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--muted-color);
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted-color);
+  max-width: 420px;
+}
+
+.wallet-connect {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.wallet-address {
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 136, 204, 0.1);
+  border-radius: 999px;
+  color: var(--accent-color);
+}
+
+.tab-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  padding: 0.25rem;
+}
+
+.tab-button {
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--muted-color);
+  cursor: pointer;
+}
+
+.tab-button-active {
+  background: rgba(0, 136, 204, 0.12);
+  color: var(--text-color);
+}
+
+.create-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .create-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.panel {
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  box-shadow: 0 20px 35px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel-title h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panel-title p {
+  margin: 0.25rem 0 0;
+  color: var(--muted-color);
+}
+
+.generator .form-label,
+.style-section .form-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.style-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.style-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.style-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+}
+
+.alert {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.alert-error {
+  background: rgba(255, 99, 132, 0.15);
+  color: #b22234;
+}
+
+.preview-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  border: 1px dashed var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.preview-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-placeholder {
+  color: var(--muted-color);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.preview-prompt {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.preview-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .preview-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: rgba(0, 136, 204, 0.1);
+  color: var(--accent-color);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text-color);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: 2px solid rgba(0, 136, 204, 0.35);
+  border-color: transparent;
+}
+
+.input[type='radio'] {
+  width: auto;
+  padding: 0;
+  accent-color: var(--accent-color);
+  background: transparent;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.album-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.album-card {
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.album-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.album-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-prompt {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.album-date {
+  font-size: 0.85rem;
+  color: var(--muted-color);
+}
+
+.album-empty {
+  align-items: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.album-empty h2 {
+  margin-bottom: 0.5rem;
 }
